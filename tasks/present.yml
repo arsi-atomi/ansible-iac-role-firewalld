@@ -11,9 +11,9 @@
   ansible.builtin.dnf:
     name: firewalld
     state: present
-    sslverify: "{{ dnf_sslverify }}"
-    validate_certs: "{{ dnf_validate_certs }}"
-    disable_gpg_check: "{{ dnf_disable_gpg_check }}"
+    sslverify: "{{ dnf_sslverify | default(true) }}"
+    validate_certs: "{{ dnf_validate_certs | default(true) }}"
+    disable_gpg_check: "{{ dnf_disable_gpg_check | default(false) }}"
   environment:
     http_proxy: "{{ http_proxy }}"
     https_proxy: "{{ https_proxy }}"
