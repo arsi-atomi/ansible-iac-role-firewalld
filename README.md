@@ -21,6 +21,24 @@ Control machine:
 Target machine:
 - DNF package manager
 
+Repository checkout
+-------------------
+
+This role includes the shared task library as a Git submodule under
+`tasks/shared`.
+
+Clone the repository with submodules:
+
+```bash
+git clone --recurse-submodules https://github.com/idarsi/ansible-iac-role-firewalld.git
+```
+
+If you already cloned the repository without submodules, initialize them with:
+
+```bash
+git submodule update --init --recursive
+```
+
 Operations
 ----------
 
