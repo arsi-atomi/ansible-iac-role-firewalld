@@ -48,6 +48,15 @@ Installing Firewalld            | present             |
 Starting Firewalld service      | started             |
 Stopping Firewalld service      | stopped             |
 
+Shared filesystem helpers
+-------------------------
+
+This role supports `directories:`, `files:`, and `binds:` through the shared
+task library under `tasks/shared`.
+
+For the exact `binds:` record structure and examples, see:
+
+- `tasks/shared/README.md`
 
 Code Quality
 ------------
