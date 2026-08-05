@@ -33,9 +33,15 @@
 # ENSURING FILESYSTEM CONFIGURATION
 ###############################################################################
 
+- name: "Ensuring bind mount configuration is absent"
+  ansible.builtin.include_tasks: bind_absent.yml
+  when: (iac_blueprint.firewalld.binds | default([])) | length > 0
+  vars:
+    iac_fs_binds: "{{ iac_blueprint.firewalld.binds | default([]) }}"
+
 - name: "Ensuring filesystem configuration is absent"
   ansible.builtin.include_tasks: fs_absent.yml
-  when: iac_blueprint.firewalld.directories is defined
+  when: (iac_blueprint.firewalld.directories | default([])) | length > 0 or (iac_blueprint.firewalld.files | default([])) | length > 0
   vars:
     iac_fs_directories: "{{ iac_blueprint.firewalld.directories | default([]) }}"
     iac_fs_files: "{{ iac_blueprint.firewalld.files | default([]) }}"
